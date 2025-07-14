@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المتجر الإلكتروني - سوق الخدمات الرقمية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f5f7fa;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .payment-method {
+            transition: all 0.3s ease;
+        }
+        
+        .payment-method:hover {
+            border-color: #4f46e5;
+        }
+        
+        .selected-payment {
+            border: 2px solid #4f46e5;
+            background-color: #f0f4ff;
+        }
+        
+        .cart-item {
+            transition: all 0.3s ease;
+        }
+        
+        .cart-item:hover {
+            background-color: #f8fafc;
+        }
+        
+        /* Animation for alerts */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .alert {
+            animation: slideIn 0.3s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <a href="#" class="text-2xl font-bold">متجر<span class="text-yellow-300">نا</span></a>
+                    <div class="hidden md:flex space-x-6 space-x-reverse">
+                        <a href="#services" class="hover:text-yellow-300">الخدمات</a>
+                        <a href="#features" class="hover:text-yellow-300">المميزات</a>
+                        <a href="#testimonials" class="hover:text-yellow-300">آراء العملاء</a>
+                        <a href="#faq" class="hover:text-yellow-300">الأسئلة الشائعة</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <button id="authBtn" class="bg-white text-blue-600 px-4 py-2 rounded-lg hover:bg-gray-100 font-medium">
+                        تسجيل الدخول / إنشاء حساب
+                    </button>
+                    <button id="cartBtn" class="relative">
+                        <i class="fas fa-shopping-cart text-2xl"></i>
+                        <span id="cartCounter" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">متجر الخدمات الرقمية الأول</h1>
+                <p class="text-xl mb-6">اشترِ أفضل الخدمات الرقمية بسهولة وأمان مع خيارات دفع متعددة</p>
+                <div class="flex space-x-4 space-x-reverse">
+                    <a href="#services" class="bg-yellow-400 text-gray-900 px-6 py-3 rounded-lg font-medium hover:bg-yellow-300">تصفح الخدمات</a>
+                    <a href="#" class="border-2 border-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-blue-600">كيفية الشراء</a>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9cb17568-bcdd-43ea-889e-c67f681ba76b.png" alt="متجر إلكتروني لبيع الخدمات الرقمية" class="rounded-lg shadow-xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">الخدمات المتاحة</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/292a42c2-242c-4b69-92e9-e22ad8343737.png" alt="خدمة تصميم جرافيك احترافي" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">تصميم جرافيك</h3>
+                        <p class="text-gray-600 mb-4">تصميم احترافي لشعارات، مطويات، ومنشورات التواصل الاجتماعي</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-blue-600">150$</span>
+                            <button class="add-to-cart bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700" data-id="1" data-name="تصميم جرافيك" data-price="150">
+                                أضف للسلة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ea76c3a8-ea3f-49cb-8b03-c8a028cc9203.png" alt="خدمة تطوير مواقع الويب" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">تطوير مواقع الويب</h3>
+                        <p class="text-gray-600 mb-4">تصميم وتطوير مواقع الويب بكافة أنواعها وخصائصها</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-blue-600">500$</span>
+                            <button class="add-to-cart bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700" data-id="2" data-name="تطوير مواقع الويب" data-price="500">
+                                أضف للسلة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0b31b8a8-2205-48b0-81e4-458af897761f.png" alt="شخص يكتب محتوى تسويقي على لوحة مفاتيح مع عرض لشاشة تحتوي على نص إبداعي" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">كتابة المحتوى</h3>
+                        <p class="text-gray-600 mb-4">كتابة محتوى إبداعي احترافي لمواقع الويب والتسويق</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-blue-600">80$</span>
+                            <button class="add-to-cart bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700" data-id="3" data-name="كتابة المحتوى" data-price="80">
+                                أضف للسلة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9cdb5efe-a73f-4be2-ac87-f4c9f8b0147b.png" alt="خدمة تطوير تطبيقات الجوال" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">تطوير تطبيقات الجوال</h3>
+                        <p class="text-gray-600 mb-4">تصميم وتطوير تطبيقات الجوال لنظامي Android و iOS</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-blue-600">700$</span>
+                            <button class="add-to-cart bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700" data-id="4" data-name="تطوير تطبيقات الجوال" data-price="700">
+                                أضف للسلة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0110f923-3ef1-4c61-8dc0-9ae5f50d6fdd.png" alt="خدمة التسويق الرقمي" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">التسويق الإلكتروني</h3>
+                        <p class="text-gray-600 mb-4">إدارة الحملات الإعلانية على منصات التواصل الاجتماعي</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-blue-600">300$</span>
+                            <button class="add-to-cart bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700" data-id="5" data-name="التسويق الإلكتروني" data-price="300">
+                                أضف للسلة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/616a3b59-8902-432a-8e85-dea19199d8b9.png" alt="ميكروفون واستوديو تسجيل صوتي مع فني يعمل على تعديل موجات صوتية على شاشة كمبيوتر" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">خدمات التسجيل الصوتي</h3>
+                        <p class="text-gray-600 mb-4">تسجيل صوتي احترافي للعروض التقديمية والإعلانات</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-blue-600">120$</span>
+                            <button class="add-to-cart bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700" data-id="6" data-name="خدمات التسجيل الصوتي" data-price="120">
+                                أضف للسلة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">لماذا تختار متجرنا؟</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-shield-alt text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">دفع آمن</h3>
+                    <p class="text-gray-600">نوفر خيارات دفع متعددة وآمنة بما فيها بطاقات الفيزا والماستركارد والعملات المشفرة</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-headset text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">دعم فني 24/7</h3>
+                    <p class="text-gray-600">فريق دعم فني متاح على مدار الساعة لمساعدتك في أي استفسار أو مشكلة</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                    <div class="text-blue-600 mb-4">
+                        <i class="fas fa-medal text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">جودة مضمونة</h3>
+                    <p class="text-gray-600">جميع خدماتنا تتمتع بأعلى معايير الجودة مع ضمان استرجاع المال إذا لم تكن راضيًا</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">آراء عملائنا</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4c845742-24cd-4d45-9b2f-93bca595d56e.png" alt="صورة مستخدم المشتري الأول" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">أحمد السعدي</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"متجر رائع وسهل الاستخدام، اشتريت عدة خدمات وكانت النتائج ممتازة. خاصة أنهم يقبلون العملات المشفرة مما سهل علي عملية الدفع."</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e5780c73-27d2-483f-ac13-bb111ec2a79a.png" alt="صورة مستخدم المشتري الثاني" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">نورا محمد</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"التعامل مع المتجر سلس جدًا، خاصة نظام الدفع الدولي الذي وفر علي عناء تحويل الأموال بين البنوك. الخدمات سريعة وبجودة عالية."</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5e5fb7d6-d97e-40cd-b288-bb1e42975f17.png" alt="صورة مستخدم المشتري الثالث" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">ريم خالد</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"لقد استفدت كثيرًا من خدمات المتجر لشركتي الناشئة. الدفع متعدد الخيارات ساعدني في اختيار الأنسب لظروفي المالية. شكرًا لكم!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">الأسئلة الشائعة</h2>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden mb-4">
+                    <button class="faq-btn w-full text-right px-6 py-4 font-medium flex justify-between items-center hover:bg-gray-50">
+                        كيف يمكنني إنشاء حساب في المتجر؟
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-6 py-4 hidden border-t border-gray-100">
+                        <p class="text-gray-600">يمكنك إنشاء حساب بسهولة عبر النقر على زر "إنشاء حساب" في أعلى الصفحة والمتابعة بإدخال معلوماتك الأساسية مثل الاسم والبريد الإلكتروني وكلمة المرور.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden mb-4">
+                    <button class="faq-btn w-full text-right px-6 py-4 font-medium flex justify-between items-center hover:bg-gray-50">
+                        ما هي خيارات الدفع المتاحة؟
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-6 py-4 hidden border-t border-gray-100">
+                        <p class="text-gray-600">نوفر عدة خيارات دفع تشمل بطاقات الفيزا والماستركارد، كما نقبل الدفع بواسطة العملات المشفرة مثل البيتكوين والإيثيريوم وغيرها من العملات المشهورة.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden mb-4">
+                    <button class="faq-btn w-full text-right px-6 py-4 font-medium flex justify-between items-center hover:bg-gray-50">
+                        هل يمكنني استرجاع المال إذا لم أكن راضيًا عن الخدمة؟
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-6 py-4 hidden border-t border-gray-100">
+                        <p class="text-gray-600">نعم، لدينا سياسة ضمان استرجاع المال خلال 14 يوم من استلام الخدمة إذا لم تكن مطابقة للمواصفات المتفق عليها أو في حال وجود خلل تقني.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden mb-4">
+                    <button class="faq-btn w-full text-right px-6 py-4 font-medium flex justify-between items-center hover:bg-gray-50">
+                        كم تستغرق عملية التسليم للخدمات؟
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer px-6 py-4 hidden border-t border-gray-100">
+                        <p class="text-gray-600">فترة التسيعير تختلف حسب نوع الخدمة ومدى تعقيدها. بشكل عام، تتراوح ما بين 24 ساعة للخدمات البسيطة إلى أسبوعين للخدمات المعقدة. سيتم إعلامك بالوقت المتوقع أثناء عملية الشراء.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">متجرنا</h3>
+                    <p class="text-gray-400">سوق الخدمات الرقمية الأول الذي يوفر حلولاً احترافية بأسعار تنافسية.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">روابط سريعة</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">الرئيسية</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white">الخدمات</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white">آراء العملاء</a></li>
+                        <li><a href="#faq" class="text-gray-400 hover:text-white">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">طرق الدفع</h3>
+                    <div class="grid grid-cols-2 gap-2">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2ec87493-fe1f-4f7a-9d0a-5282e7a4e13a.png" alt="شعار فيزا" class="h-8 object-contain">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/21fe4014-9080-48fb-874e-63262c957690.png" alt="شعار ماستركارد" class="h-8 object-contain">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/98aab72c-5bf3-489d-a3ca-4e43b6bc48b2.png" alt="شعار البيتكوين" class="h-8 object-contain">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b234e62d-b001-45ec-b5be-4824a79a6e1e.png" alt="شعار الإيثيريوم" class="h-8 object-contain">
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">تواصل معنا</h3>
+                    <div class="flex space-x-4 space-x-reverse mb-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <p class="text-gray-400">البريد الإلكتروني: info@store.com</p>
+                    <p class="text-gray-400">الهاتف: +966 12 345 6789</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>© 2023 متجرنا. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-xl shadow-xl w-full max-w-md mx-4">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-bold">تسجيل الدخول / إنشاء حساب</h3>
+                    <button id="closeAuthModal" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div id="authTabs" class="flex mb-6 border-b border-gray-200">
+                    <button id="loginTabBtn" class="px-4 py-2 font-medium text-blue-600 border-b-2 border-blue-600">تسجيل الدخول</button>
+                    <button id="registerTabBtn" class="px-4 py-2 font-medium text-gray-500">إنشاء حساب</button>
+                </div>
+                
+                <!-- Login Form -->
+                <form id="loginForm" class="space-y-4">
+                    <div>
+                        <label for="loginEmail" class="block text-gray-700 mb-2">البريد الإلكتروني</label>
+                        <input type="email" id="loginEmail" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="loginPassword" class="block text-gray-700 mb-2">كلمة المرور</label>
+                        <input type="password" id="loginPassword" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 font-medium">تسجيل الدخول</button>
+                    <p class="text-center text-gray-500">
+                        <a href="#" class="text-blue-600 hover:underline">نسيت كلمة المرور؟</a>
+                    </p>
+                </form>
+                
+                <!-- Register Form -->
+                <form id="registerForm" class="space-y-4 hidden">
+                    <div>
+                        <label for="registerName" class="block text-gray-700 mb-2">الاسم الكامل</label>
+                        <input type="text" id="registerName" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="registerEmail" class="block text-gray-700 mb-2">البريد الإلكتروني</label>
+                        <input type="email" id="registerEmail" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="registerPassword" class="block text-gray-700 mb-2">كلمة المرور</label>
+                        <input type="password" id="registerPassword" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="registerConfirmPassword" class="block text-gray-700 mb-2">تأكيد كلمة المرور</label>
+                        <input type="password" id="registerConfirmPassword" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="agreeTerms" required class="ml-2 w-5 h-5">
+                        <label for="agreeTerms" class="text-gray-700">أوافق على <a href="#" class="text-blue-600 hover:underline">الشروط والأحكام</a></label>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 font-medium">إنشاء حساب</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div id="cartSidebar" class="fixed inset-y-0 right-0 w-full md:w-96 bg-white shadow-xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="relative h-full flex flex-col">
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold">سلة التسوق</h3>
+                    <button id="closeCartSidebar" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div id="cartItems" class="flex-1 overflow-y-auto p-6 space-y-4">
+                <!-- Dynamic cart items will be added here -->
+                <p id="emptyCartMessage" class="text-center text-gray-500 py-10">سلة التسوق فارغة</p>
+            </div>
+            
+            <div class="p-6 border-t border-gray-200">
+                <div class="flex justify-between mb-4">
+                    <span class="font-medium">المجموع</span>
+                    <span id="cartTotal" class="font-bold">0$</span>
+                </div>
+                
+                <div id="paymentMethods" class="mb-6 hidden">
+                    <h4 class="font-medium mb-2">اختر طريقة الدفع</h4>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button class="payment-method bg-white border border-gray-200 rounded-lg p-3 flex flex-col items-center">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/90ba2aef-2684-4935-bc8f-7f53dc675955.png" alt="شعار بطاقات الفيزا" class="h-8 mb-2">
+                            <span>بطاقة ائتمان</span>
+                        </button>
+                        <button class="payment-method bg-white border border-gray-200 rounded-lg p-3 flex flex-col items-center">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a1cad0ed-f1b4-493e-99cd-6a7ec874d4f1.png" alt="شعار البيتكوين" class="h-8 mb-2">
+                            <span>البيتكوين</span>
+                        </button>
+                        <button class="payment-method bg-white border border-gray-200 rounded-lg p-3 flex flex-col items-center">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/dae98e41-ab80-4b2f-82d7-2ed36199ed6c.png" alt="شعار الإيثيريوم" class="h-8 mb-2">
+                            <span>الإيثيريوم</span>
+                        </button>
+                        <button class="payment-method bg-white border border-gray-200 rounded-lg p-3 flex flex-col items-center">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ec71e9dc-2255-4e3b-a656-a6d33938f967.png" alt="شعار باي بال" class="h-8 mb-2">
+                            <span>باي بال</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <button id="checkoutBtn" class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 font-medium hidden">
+                    اتمام الشراء
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-xl shadow-xl w-full max-w-md mx-4">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-bold">إتمام عملية الدفع</h3>
+                    <button id="closePaymentModal" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <!-- Credit Card Form -->
+                <form id="creditCardForm" class="space-y-4">
+                    <div>
+                        <label for="cardNumber" class="block text-gray-700 mb-2">رقم البطاقة</label>
+                        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="expiryDate" class="block text-gray-700 mb-2">تاريخ الانتهاء</label>
+                            <input type="text" id="expiryDate" placeholder="MM/YY" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="cvv" class="block text-gray-700 mb-2">CVV</label>
+                            <input type="text" id="cvv" placeholder="123" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="cardName" class="block text-gray-700 mb-2">اسم حامل البطاقة</label>
+                        <input type="text" id="cardName" placeholder="Name on card" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 font-medium">دفع <span id="paymentAmount">0$</span></button>
+                </form>
+                
+                <!-- Crypto Payment Form -->
+                <form id="cryptoPaymentForm" class="space-y-4 hidden">
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <p class="text-center font-medium mb-4">لإتمام عملية الدفع، يرجى إرسال المبلغ إلى المحفظة التالية:</p>
+                        <div class="flex items-center justify-center mb-4">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b960be68-8574-448a-8e83-cb4819adea6e.png" alt="رمز المحفظة البيتكوين" class="w-32 h-32">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-1">عنوان المحفظة</label>
+                            <div class="flex">
+                                <input type="text" id="walletAddress" readonly value="1BoatSLRHtKNngkdXEeobR76b53LETtpyT" class="flex-1 px-4 py-2 border border-gray-300 rounded-l-lg bg-gray-200">
+                                <button type="button" id="copyWalletAddress" class="bg-blue-600 text-white px-4 py-2 rounded-r-lg hover:bg-blue-700">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <label class="block text-gray-700 mb-1">المبلغ المطلوب</label>
+                            <div class="flex">
+                                <input type="text" id="cryptoAmount" readonly class="flex-1 px-4 py-2 border border-gray-300 rounded-lg bg-gray-200" value="0 BTC">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 font-medium">لقد قمت بالإرسال</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Notification -->
+    <div id="alertContainer" class="fixed top-4 right-4 z-50 space-y-3"></div>
+
+    <script>
+        // DOM Elements
+        const authBtn = document.getElementById('authBtn');
+        const authModal = document.getElementById('authModal');
+        const closeAuthModal = document.getElementById('closeAuthModal');
+        const loginTabBtn = document.getElementById('loginTabBtn');
+        const registerTabBtn = document.getElementById('registerTabBtn');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        
+        const cartBtn = document.getElementById('cartBtn');
+        const cartSidebar = document.getElementById('cartSidebar');
+        const closeCartSidebar = document.getElementById('closeCartSidebar');
+        const cartItems = document.getElementById('cartItems');
+        const emptyCartMessage = document.getElementById('emptyCartMessage');
+        const cartCounter = document.getElementById('cartCounter');
+        const cartTotal = document.getElementById('cartTotal');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        
+        const paymentModal = document.getElementById('paymentModal');
+        const closePaymentModal = document.getElementById('closePaymentModal');
+        const creditCardForm = document.getElementById('creditCardForm');
+        const cryptoPaymentForm = document.getElementById('cryptoPaymentForm');
+        const paymentAmount = document.getElementById('paymentAmount');
+        const cryptoAmount = document.getElementById('cryptoAmount');
+        const walletAddress = document.getElementById('walletAddress');
+        const copyWalletAddress = document.getElementById('copyWalletAddress');
+        const paymentMethods = document.getElementById('paymentMethods');
+        
+        const alertContainer = document.getElementById('alertContainer');
+        
+        let cart = [];
+        let currentUser = null;
+        let selectedPaymentMethod = null;
+        
+        // Initialize event listeners
+        function init() {
+            // Auth modal
+            authBtn.addEventListener('click', toggleAuthModal);
+            closeAuthModal.addEventListener('click', toggleAuthModal);
+            
+            // Auth tabs
+            loginTabBtn.addEventListener('click', () => switchAuthTab('login'));
+            registerTabBtn.addEventListener('click', () => switchAuthTab('register'));
+            
+            // Forms
+            loginForm.addEventListener('submit', handleLogin);
+            registerForm.addEventListener('submit', handleRegister);
+            
+            // Cart
+            cartBtn.addEventListener('click', toggleCartSidebar);
+            closeCartSidebar.addEventListener('click', toggleCartSidebar);
+            
+            // Add to cart buttons
+            document.querySelectorAll('.add-to-cart').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    addToCart(btn);
+                });
+            });
+            
+            // Payment methods
+            document.querySelectorAll('.payment-method').forEach(btn => {
+                btn.addEventListener('click', () => selectPaymentMethod(btn));
+            });
+            
+            // Checkout
+            checkoutBtn.addEventListener('click', () => {
+                toggleCartSidebar();
+                togglePaymentModal();
+            });
+            
+            // Payment modal
+            closePaymentModal.addEventListener('click', togglePaymentModal);
+            
+            // Payment forms
+            creditCardForm.addEventListener('submit', handlePayment);
+            cryptoPaymentForm.addEventListener('submit', handlePayment);
+            
+            // Copy wallet address
+            copyWalletAddress.addEventListener('click', copyToClipboard);
+            
+            // FAQ accordion
+            document.querySelectorAll('.faq-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const answer = btn.nextElementSibling;
+                    const icon = btn.querySelector('i');
+                    
+                    answer.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                });
+            });
+        }
+        
+        // Toggle auth modal
+        function toggleAuthModal() {
+            authModal.classList.toggle('hidden');
+        }
+        
+        // Switch between login and register tabs
+        function switchAuthTab(tab) {
+            if (tab === 'login') {
+                loginTabBtn.classList.add('text-blue-600', 'border-b-2', 'border-blue-600');
+                loginTabBtn.classList.remove('text-gray-500');
+                registerTabBtn.classList.add('text-gray-500');
+                registerTabBtn.classList.remove('text-blue-600', 'border-b-2', 'border-blue-600');
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+            } else {
+                registerTabBtn.classList.add('text-blue-600', 'border-b-2', 'border-blue-600');
+                registerTabBtn.classList.remove('text-gray-500');
+                loginTabBtn.classList.add('text-gray-500');
+                loginTabBtn.classList.remove('text-blue-600', 'border-b-2', 'border-blue-600');
+                registerForm.classList.remove('hidden');
+                loginForm.classList.add('hidden');
+            }
+        }
+        
+        // Handle login
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            // Simulate login
+            currentUser = {
+                email,
+                name: 'مستخدم جديد'
+            };
+            
+            toggleAuthModal();
+            showAlert('success', 'تم تسجيل الدخول بنجاح!');
+            updateAuthButton();
+        }
+        
+        // Handle register
+        function handleRegister(e) {
+            e.preventDefault();
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                showAlert('error', 'كلمات المرور غير متطابقة');
+                return;
+            }
+            
+            // Simulate registration
+            currentUser = {
+                email,
+                name
+            };
+            
+            toggleAuthModal();
+            showAlert('success', 'تم إنشاء الحساب بنجاح!');
+            updateAuthButton();
+            
+            // Reset form and switch to login tab
+            e.target.reset();
+            switchAuthTab('login');
+        }
+        
+        // Update auth button text
+        function updateAuthButton() {
+            if (currentUser) {
+                authBtn.textContent = currentUser.name;
+                authBtn.innerHTML = `${currentUser.name} <i class="fas fa-chevron-down mr-2"></i>`;
+            } else {
+                authBtn.textContent = 'تسجيل الدخول / إنشاء حساب';
+            }
+        }
+        
+        // Toggle cart sidebar
+        function toggleCartSidebar() {
+            cartSidebar.classList.toggle('translate-x-full');
+        }
+        
+        // Add item to cart
+        function addToCart(btn) {
+            if (!currentUser) {
+                showAlert('warning', 'يجب تسجيل الدخول أولاً لشراء الخدمات');
+                toggleAuthModal();
+                return;
+            }
+            
+            const id = btn.getAttribute('data-id');
+            const name = btn.getAttribute('data-name');
+            const price = parseFloat(btn.getAttribute('data-price'));
+            
+            const existingItem = cart.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id,
+                    name,
+                    price,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            showAlert('success', 'تمت إضافة الخدمة إلى سلة التسوق');
+        }
+        
+        // Update cart UI
+        function updateCart() {
+            // Clear cart
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                emptyCartMessage.classList.remove('hidden');
+                cartCounter.classList.add('hidden');
+                checkoutBtn.classList.add('hidden');
+                paymentMethods.classList.add('hidden');
+                cartTotal.textContent = '0$';
+                return;
+            }
+            
+            emptyCartMessage.classList.add('hidden');
+            
+            // Add items
+            let total = 0;
+            
+            cart.forEach(item => {
+                total += item.price * item.quantity;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item bg-gray-50 p-4 rounded-lg';
+                cartItem.innerHTML = `
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="font-medium">${item.name}</h4>
+                        <span class="font-bold">${item.price}$</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center space-x-4 space-x-reverse">
+                            <button class="decrease-quantity text-gray-500 hover:text-red-500" data-id="${item.id}">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="quantity">${item.quantity}</span>
+                            <button class="increase-quantity text-gray-500 hover:text-green-500" data-id="${item.id}">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                        <button class="remove-item text-gray-500 hover:text-red-500" data-id="${item.id}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                
+                cartItems.appendChild(cartItem);
+            });
+            
+            // Add event listeners to new buttons
+            document.querySelectorAll('.decrease-quantity').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = btn.getAttribute('data-id');
+                    const item = cart.find(item => item.id === id);
+                    
+                    if (item.quantity > 1) {
+                        item.quantity -= 1;
+                    } else {
+                        cart = cart.filter(item => item.id !== id);
+                    }
+                    
+                    updateCart();
+                });
+            });
+            
+            document.querySelectorAll('.increase-quantity').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = btn.getAttribute('data-id');
+                    const item = cart.find(item => item.id === id);
+                    item.quantity += 1;
+                    updateCart();
+                });
+            });
+            
+            document.querySelectorAll('.remove-item').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = btn.getAttribute('data-id');
+                    cart = cart.filter(item => item.id !== id);
+                    updateCart();
+                    showAlert('success', 'تمت إزالة الخدمة من السلة');
+                });
+            });
+            
+            // Update total
+            cartTotal.textContent = `${total}$`;
+            paymentAmount.textContent = `${total}$`;
+            
+            // BTC price is for demonstration only
+            cryptoAmount.value = `${(total / 30000).toFixed(8)} BTC`;
+            
+            // Update counter
+            const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCounter.textContent = itemCount;
+            cartCounter.classList.remove('hidden');
+            
+            // Show checkout button
+            checkoutBtn.classList.remove('hidden');
+            paymentMethods.classList.remove('hidden');
+        }
+        
+        // Select payment method
+        function selectPaymentMethod(btn) {
+            document.querySelectorAll('.payment-method').forEach(m => {
+                m.classList.remove('selected-payment');
+            });
+            
+            btn.classList.add('selected-payment');
+            selectedPaymentMethod = btn.querySelector('span').textContent;
+        }
+        
+        // Toggle payment modal
+        function togglePaymentModal() {
+            paymentModal.classList.toggle('hidden');
+            
+            if (!paymentModal.classList.contains('hidden')) {
+                if (!selectedPaymentMethod) {
+                    showAlert('warning', 'الرجاء اختيار طريقة الدفع أولاً');
+                    toggleCartSidebar();
+                    togglePaymentModal();
+                    return;
+                }
+                
+                if (selectedPaymentMethod === 'بطاقة ائتمان') {
+                    creditCardForm.classList.remove('hidden');
+                    cryptoPaymentForm.classList.add('hidden');
+                } else {
+                    creditCardForm.classList.add('hidden');
+                    cryptoPaymentForm.classList.remove('hidden');
+                }
+            }
+        }
+        
+        // Handle payment
+        function handlePayment(e) {
+            e.preventDefault();
+            
+            togglePaymentModal();
+            cart = [];
+            updateCart();
+            
+            showAlert('success', `تمت عملية الدفع باستخدام ${selectedPaymentMethod} بنجاح! شكرًا لشرائك.`);
+            
+            setTimeout(() => {
+                showAlert('info', 'ستصلك تفاصيل الخدمة على بريدك الإلكتروني خلال 24 ساعة');
+            }, 2000);
+            
+            selectedPaymentMethod = null;
+        }
+        
+        // Copy wallet address to clipboard
+        function copyToClipboard() {
+            walletAddress.select();
+            document.execCommand('copy');
+            
+            showAlert('success', 'تم نسخ عنوان المحفظة');
+        }
+        
+        // Show alert notification
+        function showAlert(type, message) {
+            const alert = document.createElement('div');
+            alert.className = `alert bg-${type}-100 text-${type}-800 px-6 py-4 rounded-lg shadow-lg flex items-center justify-between`;
+            
+            alert.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-${type === 'error' ? 'times-circle' : type === 'warning' ? 'exclamation-triangle' : 'check-circle'} mr-3"></i>
+                    <span>${message}</span>
+                </div>
+                <button class="close-alert text-${type}-800 ml-4">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            
+            alert.querySelector('.close-alert').addEventListener('click', () => {
+                alert.remove();
+            });
+            
+            alertContainer.appendChild(alert);
+            
+            setTimeout(() => {
+                alert.remove();
+            }, 5000);
+        }
+        
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
+
